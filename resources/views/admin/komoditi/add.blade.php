@@ -24,29 +24,29 @@
             <label for="">Satuan</label>
             <select name="satuan" class="form-control @error('satuan') is-invalid @enderror" id="">
               <option value="">-- Satuan --</option>
-              <option value="Liter"
+              <option value="Ltr"
               <?php 
               if(isset($komoditi)) {
-                if($komoditi->satuan == 'Liter') {
+                if($komoditi->satuan == 'Ltr') {
                   echo 'selected';
                   }
               }else{
-                if(old('satuan') == 'Liter') {
+                if(old('satuan') == 'Ltr') {
                   echo 'selected';
                 }
-              } ?> >Per Liter</option>
-              <option value="Kilogram"
+              } ?> >Per Ltr</option>
+              <option value="Kg"
               <?php 
               if(isset($komoditi)) {
-                if($komoditi->satuan == 'Kilogram') {
+                if($komoditi->satuan == 'Kg') {
                   echo 'selected';
                   }
               }else{
-                if(old('satuan') == 'Kilogram') {
+                if(old('satuan') == 'Kg') {
                   echo 'selected';
                 }
               } ?>
-              >Per Kilogram</option>
+              >Per Kg</option>
             </select>
              @error('satuan')
                 <div class="invalid-feedback">

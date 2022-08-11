@@ -61,7 +61,7 @@ class AdminKomoditiController extends Controller
         // dd($request);
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'satuan'              => 'required|min:3',
+            'satuan'              => 'required',
             'gambar'              => 'required',
         ]);
 
@@ -126,7 +126,7 @@ class AdminKomoditiController extends Controller
         $komoditi = Komoditi::find($id);
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'satuan'              => 'required|min:3',
+            'satuan'              => 'required',
             'gambar'              => '|mimes:jpeg,jpg,png,JPG,JPEG,PNG',
         ]);
 

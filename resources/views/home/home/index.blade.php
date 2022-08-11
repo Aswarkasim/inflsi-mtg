@@ -162,7 +162,7 @@
 
         @foreach ($rekapByKecamatan as $item)
             
-        <div class="col-md-2">
+        <div class="col-md-2 mt-2">
           <div class="card card-komoditi">
             <div class="img-wrapper-komoditi">
               <img src="/{{$item->komoditi->gambar}}" class="card-img-top" width="100%" alt="...">
