@@ -1,0 +1,94 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600&display=swap"); */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@400&display=swap'); */
+body {
+    background-color: white;
+    /* font-family: "Public Sans", sans-serif; */
+    font-family: "Poppins", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
+    color: #000 !important;
+    font-size: 14px;
+}
+
+/* .container {
+    max-width: 800px;
+} */
+
+a {
+    color: #3b7ddd;
+}
+
+
+.img-post-wrapper {
+    max-width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.img-post {
+    max-width: 100%;
+}
+
+.bg-blue{
+    /* background-color: #b4ffcc; */
+    background-color: #ccf4d3;
+}
+
+.card-komoditi{
+    width: 100%;
+    height: 300px;
+    border: none;
+    
+}
+
+.img-wrapper-komoditi{
+    width: 100%;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.alert{
+    padding: 5px;
+}
+
+
+
+.content-komoditi-peta{
+    width: 100%;
+    max-height: 90px;
+}
+
+.title-komoditi-peta{
+    float: left;
+}
+
+.status-komoditi-peta{
+    float: right;
+}
+
+.wrapper-peta{
+    margin: 10px 200px 100px 100px;
+}
+
+
+
+.text-black{
+    color: #000 !important;
+}
+
+.active {
+    color: #00a859 !important;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #00a859;
+    border-color: #00a859;
+}
+
+.img-wrapper-cover {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}

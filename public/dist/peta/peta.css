@@ -1,0 +1,113 @@
+  
+
+#mateng-map {
+  padding-top: 15px;
+  margin-left: -25px;
+}
+
+#mateng-map g {
+  -webkit-transition: .3s;
+  transition: .3s;
+  margin-left: -25px;
+}
+
+#mateng-map g:hover {
+  cursor: pointer;
+  margin-left: -25px;
+}
+
+.active,
+.active:hover {
+  fill: #0dcaf0 !important;
+  margin-left: -25px;
+}
+
+#kecamatanInfo {
+  /* position: absolute; */
+  /* position: relative; */
+  padding: 10px;
+  right: 4%;
+  width: 100%;
+  /* background: rgba(0, 0, 0, 0.2); */
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#kecamatanInfo.show {
+  opacity: 1;
+}
+
+#kecamatanInfo h1 {
+  /* background: #2e2e9e; */
+  padding: .3rem;
+  padding-left: 1rem;
+  margin-top: -.5rem;
+  font-weight: 400;
+}
+
+#kecamatanInfo p {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+#kecamatanInfo img {
+  width: 100%;
+  max-height: 380px;
+}
+
+/* @media all and (max-width: 800px) {
+  #mateng-map {
+    margin-top: 25%;
+  }
+
+  #kecamatanInfo {
+    width: 100%;
+  }
+
+} */
+
+/* @media all and (max-width: 100%) {
+  #mateng-map {
+    margin-left: 20%;
+    margin-top: 2%;
+  }
+
+  #kecamatanInfo {
+    width: 100%;
+    position: static;
+    margin-left: 15%;
+    margin-top: 10px;
+  }
+
+  #kecamatanInfo.show p {
+    color: #fff !important;
+    margin-bottom: 2rem;
+    padding-bottom: 5%;
+  }
+
+  #kecamatanInfo h1 {
+    font-size: 26px;
+  }
+
+  #kecamatanInfo img {
+    width: 100%;
+    max-height: 320px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  #kecamatanInfo {
+    margin-top: 10px;
+  }
+
+  #kecamatanInfo.show p {
+    font-size: 14px;
+    padding-bottom: 5%;
+  }
+
+  #kecamatanInfo h1 {
+    font-size: 20px;
+  }
+} */
