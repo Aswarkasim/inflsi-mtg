@@ -46,7 +46,7 @@
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
               <a class="dropdown-item" href="/admin/survey/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
-                <form action="/admin/survey/{{$row->id}}" method="post" id="form-delete" class="tombol-hapus">
+                <form action="/admin/survey/{{$row->id}}" method="post">
                   @method('delete')
                   @csrf
                   <button type="submit" id="delete" class="dropdown-item"><i class="fa fa-trash"></i> Hapus</button>

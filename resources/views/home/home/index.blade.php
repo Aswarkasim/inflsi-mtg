@@ -169,7 +169,7 @@
             </div>
             <div class="card-body">
               <p class="card-title">{{$item->komoditi->name}} </p>
-              <h6><strong>{{format_rupiah($item->harga)}}/{{$item->komoditi->satuan}}</strong></h6><br>
+              <h6><strong>{{format_rupiah($item->harga)}}/{{$item->komoditi->satuan->name}}</strong></h6><br>
               <div class="alert alert-success"><i class="fas fa-arrow-down"></i> Turun Rp. 2.000</div>
             </div>
           </div>

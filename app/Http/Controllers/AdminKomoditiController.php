@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komoditi;
+use App\Models\Satuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -19,11 +20,13 @@ class AdminKomoditiController extends Controller
         //
         $cari = request('cari');
 
+        // $komoditi = [];
         if ($cari) {
-            $komoditi = Komoditi::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $komoditi = Komoditi::with('satuan')->where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
         } else {
-            $komoditi = Komoditi::latest()->paginate(10);
+            $komoditi = Komoditi::with('satuan')->latest()->paginate(10);
         }
+        // dd($komoditi->satuan);
         $data = [
             'title'   => 'Manajemen Komoditi',
             'komoditi' => $komoditi,
@@ -41,7 +44,8 @@ class AdminKomoditiController extends Controller
     {
         //
         $data = [
-            'title'   => 'Manajemen Komoditi Komoditi',
+            'title'   => 'Manajemen Komoditi',
+            'satuan'  => Satuan::all(),
             'content' => 'admin/komoditi/add'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -61,7 +65,7 @@ class AdminKomoditiController extends Controller
         // dd($request);
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'satuan'              => 'required',
+            'satuan_id'              => 'required',
             'gambar'              => 'required',
         ]);
 
@@ -81,7 +85,7 @@ class AdminKomoditiController extends Controller
         Komoditi::create($data);
         Alert::success('Sukses', 'Komoditi telah ditambahkan');
         //return redirect back();
-        return redirect('/admin/komoditi');
+        return redirect('/admin/komoditi/komoditi');
     }
 
     /**
@@ -108,6 +112,7 @@ class AdminKomoditiController extends Controller
         $data = [
             'title'   => 'Edit Komoditi',
             'komoditi' => $komoditi,
+            'satuan'  => Satuan::all(),
             'content' => 'admin/komoditi/add'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -126,7 +131,7 @@ class AdminKomoditiController extends Controller
         $komoditi = Komoditi::find($id);
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'satuan'              => 'required',
+            'satuan_id'              => 'required',
             'gambar'              => '|mimes:jpeg,jpg,png,JPG,JPEG,PNG',
         ]);
 
@@ -146,7 +151,7 @@ class AdminKomoditiController extends Controller
         $komoditi->update($data);
         Alert::success('Sukses', 'Komoditi telah ditambahkan');
         //return redirect back();
-        return redirect('/admin/komoditi');
+        return redirect('/admin/komoditi/komoditi');
     }
 
     /**
@@ -160,6 +165,6 @@ class AdminKomoditiController extends Controller
         //
         DB::table('komoditis')->delete($id);
         Alert::success('success', 'Kateogri telah dihapus');
-        return redirect('/admin/master/komoditi');
+        return redirect('/admin/komoditi/komoditi');
     }
 }

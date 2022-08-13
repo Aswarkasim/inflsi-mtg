@@ -10,4 +10,9 @@ class Komoditi extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    function satuan()
+    {
+        return $this->belongsTo(Satuan::class);
+    }
 }

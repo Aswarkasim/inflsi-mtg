@@ -21,7 +21,6 @@
     <tr>
       <th>No</th>
       <th>Tanggal</th>
-      <th>Kecamatan</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -31,13 +30,12 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/admin/rekap/{{$row->id}}"><b> {{$row->tanggal}}</b></a></td>
-      <td>{{$row->kecamatan->name}}</td>
+      <td><a href="/admin/rekap/detail/{{$row->id}}"><b> {{$row->tanggal}}</b></a></td>
       <td>
          <form action="/admin/rekap/delete/{{$row->id}}" method="post">
             @method('delete')
             @csrf
-            <button type="submit" id="delete"><i class="fa fa-times"></i> Hapus</button>
+            <button type="submit" class="btn btn-danger" id="delete"><i class="fa fa-times"></i> Hapus</button>
           </form>
       </td>
     </tr>

@@ -21,7 +21,7 @@
     <link href="/dist/css/carousel.css" rel="stylesheet">
       <link rel="stylesheet" href="/dist/css/ktchome.css">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="/plugins/jquery/jquery.min.js"></script>
 
   </head>
   <body>

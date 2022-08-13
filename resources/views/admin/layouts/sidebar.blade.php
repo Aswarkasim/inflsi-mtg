@@ -52,13 +52,30 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="/admin/komoditi" class="nav-link {{Request::is('admin/komoditi') ? 'active' : ''}}">
+
+           <li class="nav-item {{Request::is('admin/komoditi*') ? 'menu-open' : ''}}">
+            <a href="#" class="nav-link {{Request::is('admin/komoditi*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-carrot"></i>
               <p>
                 Komoditi
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/komoditi/komoditi/" class="nav-link {{Request::is('admin/komoditi/komoditi*') ? 'child-active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Komoditi</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/admin/komoditi/satuan" class="nav-link {{Request::is('admin/komoditi/satuan*') ? 'child-active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Satuan</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
            <li class="nav-item {{Request::is('admin/master*') ? 'menu-open' : ''}}">

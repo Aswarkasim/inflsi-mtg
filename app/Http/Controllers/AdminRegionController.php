@@ -42,4 +42,21 @@ class AdminRegionController extends Controller
 
         return response()->json($dataPasar);
     }
+
+    function getPasarByKecamatan($kecamatan_id)
+    {
+        if (!$kecamatan_id) return response()->json('NOT OK');
+
+        $kecamatan = Pasar::where('kecamatan_id', $kecamatan_id)->get();
+
+        if ($kecamatan == false) return response()->json('NOT OK');
+
+        $dataPasar = "";
+
+        foreach ($kecamatan as $key) {
+            $dataPasar .= "<option value='" . $key->id . "'>$key->name</option>";
+        }
+
+        return response()->json($dataPasar);
+    }
 }

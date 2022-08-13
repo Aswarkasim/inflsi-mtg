@@ -41,7 +41,7 @@
                             }
                           }
                           ?>
-                        >{{$item->nama}}</option>
+                        >{{$item->name}}</option>
                   @endforeach
                 </select>
                 @error('kategori_id')

@@ -66,11 +66,15 @@ class AdminRekapSurveyController extends Controller
 
     private function rerata($rekap)
     {
+        // dd($rekap);
         $sum = 0;
         foreach ($rekap as $r) {
             $sum = $sum + $r->harga;
         }
         $n = count($rekap);
+        if ($n == null) {
+            $n = 0;
+        }
         $rerata = $sum / $n;
         return $rerata;
     }
@@ -86,5 +90,20 @@ class AdminRekapSurveyController extends Controller
             DB::table('rekap_surveys')->delete($r->id);
         }
         return redirect('/admin/rekap');
+    }
+
+    function detail($id)
+    {
+        $rekap  = RekapSurvey::find($id);
+        // echo $rekap->tanggal;
+        $data = [
+            'title'   => 'Rekap Survey',
+            // 'rekap_kecamatan' => RekapSurvey::with(['komoditi', 'kecamatan'])->groupBy('kecamatan_id')->whereTanggal($rekap->tanggal)->get(),
+            'kecamatan'    => Kecamatan::all(),
+            'rekap_detail' => RekapSurvey::with(['komoditi', 'kecamatan'])->groupBy('komoditi_id')->whereTanggal($rekap->tanggal)->get(),
+            'rekap_tanggal' => $rekap->tanggal,
+            'content' => 'admin/rekap/detail'
+        ];
+        return view('admin/layouts/wrapper', $data);
     }
 }

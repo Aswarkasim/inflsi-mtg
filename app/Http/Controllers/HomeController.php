@@ -21,7 +21,7 @@ class HomeController extends Controller
         $kecamatan_id = request('kecamatan_id');
 
         if (!$komoditi_id) {
-            $komoditi_id = 2;
+            $komoditi_id = 6;
         }
 
         if (!$kecamatan_id) {

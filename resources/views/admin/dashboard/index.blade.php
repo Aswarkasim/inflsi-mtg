@@ -9,7 +9,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Jumlah Komoditi</span>
             <span class="info-box-number">
-              12
+              {{$komoditi}}
               <small>Komoditi</small>
             </span>
 
@@ -26,7 +26,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Jumlah Pasar</span>
             <span class="info-box-number">
-              12
+              {{$pasar}}
               <small>Pasar</small>
             </span>
 
@@ -43,7 +43,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Jumlah Survey Bulan ini</span>
             <span class="info-box-number">
-              12
+              {{$survey}}
               <small>Survey</small>
             </span>
 

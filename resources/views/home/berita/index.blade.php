@@ -8,20 +8,20 @@
     <div class="col-md-8">
       <div class="text-success py-4"><h4><strong>Berita Terbaru</strong></h4></div>
       
-      @for ($i = 0; $i < 4; $i++)
+      @foreach ($post as $item)
           
       <div class="card mt-2 shadow-sm rounded">
         <div class="d-flex">
-          <img src="/img/pad.jpg" width="200px" alt="">
+          <img src="/{{$item->image}}" width="200px" alt="">
           
           <div class="content-text p-4">
-            <h5><a href="" class="text-decoration-none"><strong>Padi semakin menrunduk semakin berisi</strong></a></h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil quas vero eum facilis, recusandae necessitatibus sint autem quibusdam nobis fugit porro soluta dolor obcaecati et dolorem architecto possimus libero quos officia </p>
+            <h5><a href="" class="text-decoration-none"><strong>{{$item->title}}</strong></a></h5>
+            <p>{{$item->excerpt}}</p>
           </div>
         </div>
       </div>
 
-      @endfor
+      @endforeach
     </div>
 
     <div class="col-md-4">
@@ -41,7 +41,7 @@
                 <img src="/img/pad.jpg" width="100%" alt="">
               </div>
               <div class="p-3">
-                <a href = "" class="text-decoration-none">Judl berita Terkait</a>
+                <a href = "" class="text-decoration-none">Judul berita Terkait</a>
               </div>
             </div>
           </div>

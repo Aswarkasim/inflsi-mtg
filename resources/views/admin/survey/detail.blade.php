@@ -32,7 +32,7 @@
                    
                     <label for="">Komoditi</label>
                     <select name="komoditi_id" id="" required class="form-control">
-                      <option value="">--Komoditi---</option>
+                      {{-- <option value="">--Komoditi---</option> --}}
                       @foreach ($komoditi as $item)
                        @php
                         $cek = \App\Models\SurveyDetail::whereSurveyId($survey->id)->whereKomoditiId($item->id)->first();
@@ -73,7 +73,7 @@
             @foreach ($survey_detail as $row)
             <tr>
               <td>{{$row->komoditi->name}}</td>
-              <td>{{$row->komoditi->satuan}}</td>
+              <td>{{$row->komoditi->satuan->name}}</td>
               <td>{{format_rupiah($row->harga)}}</td>
               <td>{{format_rupiah($row->range)}}</td>
               <td>{{$row->status}}</td>

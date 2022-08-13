@@ -7,6 +7,8 @@
 
 
 <!-- Bootstrap 4 -->
+{{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> --}}
+
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/dist/bs5/js/bootstrap.js"></script>
 <!-- AdminLTE App -->

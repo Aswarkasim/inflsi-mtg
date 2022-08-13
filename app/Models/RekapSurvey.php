@@ -18,6 +18,6 @@ class RekapSurvey extends Model
 
     function komoditi()
     {
-        return $this->belongsTo(Komoditi::class);
+        return $this->belongsTo(Komoditi::class)->with('satuan');
     }
 }

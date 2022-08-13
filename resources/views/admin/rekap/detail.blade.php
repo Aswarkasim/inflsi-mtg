@@ -8,42 +8,22 @@
           <div class="col-md-4">
             <table class="table">
                <td>Tanggal</td>
-                <td>: {{$survey->tanggal}}</td>
+                {{-- <td>: {{$rekap->tanggal}}</td> --}}
             </tr>
-              <tr>
-                <td>Nama Pasar</td>
-                <td>: {{$survey->pasar->name}}</td>
-              </tr>
             </table>
           </div>
 {{-- @php
-    echo 'Survery ID :'.$survey->id;
+    echo 'Survery ID :'.$rekap->id;
 @endphp --}}
           <div class="col-md-8">
-            <form action="/admin/survey/detail" method="POST">
+            <form action="/admin/rekap/detail" method="POST">
 
               @csrf
 
-              <input type="hidden" name="survey_id" value="{{$survey->id}}">
+              {{-- <input type="hidden" name="rekap_id" value="{{$rekap->id}}"> --}}
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
 
-                   
-                    <label for="">Komoditi</label>
-                    <select name="komoditi_id" id="" required class="form-control">
-                      <option value="">--Komoditi---</option>
-                      @foreach ($komoditi as $item)
-                       @php
-                        $cek = \App\Models\SurveyDetail::whereSurveyId($survey->id)->whereKomoditiId($item->id)->first();
-                        if(!$cek){
-                          echo '<option value="'.$item->id.'">'.$item->name.'</option>';
-                        }
-                      @endphp
-                      
-                      @endforeach
-                    </select>
-                  </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
@@ -63,20 +43,24 @@
           <thead>
             <tr>
               <th>Komoditi</th>
-              <th>Satuan</th>
-              <th>Harga</th>
-              <th>Selisih</th>
-              <th>Status</th>
+              @foreach ($kecamatan as $k)
+              <th>{{$k->name}}</th>
+              @endforeach
             </tr>
           </thead>
           <tbody>
-            @foreach ($survey_detail as $row)
+            @foreach ($rekap_detail as $row)
             <tr>
               <td>{{$row->komoditi->name}}</td>
-              <td>{{$row->komoditi->satuan}}</td>
-              <td>{{format_rupiah($row->harga)}}</td>
-              <td>{{format_rupiah($row->range)}}</td>
-              <td>{{$row->status}}</td>
+               @foreach ($kecamatan as $k)
+              <td>
+                @php
+                    $rekap = \App\Models\RekapSurvey::with('komoditi')->whereKomoditiId($row->komoditi_id)->whereTanggal($rekap_tanggal)->whereKecamatanId($k->id)->first();
+                    echo isset($rekap) ? format_rupiah($rekap->harga) : '';
+                @endphp
+              </td>
+              
+              @endforeach
             </tr>
             @endforeach
           </tbody>

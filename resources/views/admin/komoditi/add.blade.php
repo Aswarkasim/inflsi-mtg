@@ -3,10 +3,10 @@
     <div class="p-3  card">
       <div class="card-body">
 
-        @if (Request::is('admin/komoditi/create'))
-          <form action="/admin/komoditi" method="POST" enctype="multipart/form-data">  
+        @if (Request::is('admin/komoditi/komoditi/create'))
+          <form action="/admin/komoditi/komoditi" method="POST" enctype="multipart/form-data">  
         @else 
-          <form action="/admin/komoditi/{{$komoditi->id}}" method="POST" enctype="multipart/form-data">  
+          <form action="/admin/komoditi/komoditi/{{$komoditi->id}}" method="POST" enctype="multipart/form-data">  
             @method('PUT')
         @endif
           @csrf
@@ -22,33 +22,13 @@
           
           <div class="form-group">
             <label for="">Satuan</label>
-            <select name="satuan" class="form-control @error('satuan') is-invalid @enderror" id="">
+            <select name="satuan_id" class="form-control @error('satuan_id') is-invalid @enderror" id="">
               <option value="">-- Satuan --</option>
-              <option value="Ltr"
-              <?php 
-              if(isset($komoditi)) {
-                if($komoditi->satuan == 'Ltr') {
-                  echo 'selected';
-                  }
-              }else{
-                if(old('satuan') == 'Ltr') {
-                  echo 'selected';
-                }
-              } ?> >Per Ltr</option>
-              <option value="Kg"
-              <?php 
-              if(isset($komoditi)) {
-                if($komoditi->satuan == 'Kg') {
-                  echo 'selected';
-                  }
-              }else{
-                if(old('satuan') == 'Kg') {
-                  echo 'selected';
-                }
-              } ?>
-              >Per Kg</option>
+              @foreach ($satuan as $item)
+                  <option value="{{$item->id}}" {{isset($komoditi) ? $item->id == $komoditi->satuan_id ? 'selected' : '' : ''}}>{{$item->name}}</option>
+              @endforeach
             </select>
-             @error('satuan')
+             @error('satuan_id')
                 <div class="invalid-feedback">
                   {{$message}}
                 </div>
@@ -82,7 +62,7 @@
 
      {{-- {!!form_input($errors, 'name', 'Nama', isset($komoditi) ? $komoditi : null)!!} --}}
 
-          <a href="/admin/komoditi" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
+          <a href="/admin/komoditi/komoditi" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
         
         </form>

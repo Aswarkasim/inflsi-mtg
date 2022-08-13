@@ -15,6 +15,7 @@ class CreateKomoditisTable extends Migration
     {
         Schema::create('komoditis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('satuan_id');
             $table->string('name');
             $table->string('gambar');
             $table->string('desc');
