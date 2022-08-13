@@ -14,7 +14,7 @@
           @csrf
 
           <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
 
               <div class="form-group">
                 <label for="">Judul</label>
@@ -66,7 +66,7 @@
               </div>
 
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                <div class="form-group">
                 <label for="">Isi Berita</label>
                 <textarea class="form-control  @error('title') is-invalid @enderror" id="summernote"  name="body" placeholder="Isi Artikel">{{isset($post) ? $post->title : old('title')}}</textarea>
