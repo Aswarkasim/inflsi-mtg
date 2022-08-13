@@ -30,7 +30,7 @@ class HomeController extends Controller
 
 
         $rekap = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKomoditiId($komoditi_id)->latest('tanggal')->get();
-        $rekapByKecamatan  = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->latest('tanggal')->get();
+        $rekapByKecamatan  = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->latest('tanggal')->limit(6)->get();
         // dd($rekap);
         $data = [
             'banner'    => Banner::get(),
