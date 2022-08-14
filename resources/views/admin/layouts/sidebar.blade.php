@@ -160,7 +160,7 @@
           </li>
 
            <li class="nav-item">
-            <a href="/admin/banner" class="nav-link">
+            <a href="/admin/banner" class="nav-link {{Request::is('admin/banner') ? 'active' : ''}}">
               <i class="nav-icon fas fa-image"></i>
               <p>
                 Banner
@@ -169,7 +169,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="/admin/konfigurasi" class="nav-link">
+            <a href="/admin/konfigurasi" class="nav-link {{Request::is('admin/konfigurasi') ? 'active' : ''}}">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Konfigurasi
