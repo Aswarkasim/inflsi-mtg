@@ -106,4 +106,8 @@ Route::get('/komoditi', [HomeKomoditiController::class, 'index']);
 Route::get('/berita', [HomeBeritaController::class, 'index']);
 Route::get('/contact', [HomeContactController::class, 'index']);
 Route::post('/contact/send', [HomeContactController::class, 'sendSaran']);
-Route::get('/laporan', [HomeLaporanController::class, 'index']);
+
+Route::prefix('/laporan')->group(function () {
+    Route::get('/', [HomeLaporanController::class, 'index']);
+    Route::get('/show', [HomeLaporanController::class, 'show']);
+});
