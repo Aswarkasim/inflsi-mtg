@@ -17,7 +17,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="/admin/dashboard" class="nav-link {{Request::is('admin/dashboard') ? 'active' : ''}}">
+            <a href="/admin/dashboard" class="nav-link {{Request::is('admin/dashboard*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -26,7 +26,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/admin/saran" class="nav-link {{Request::is('admin/saran') ? 'active' : ''}}">
+            <a href="/admin/saran" class="nav-link {{Request::is('admin/saran*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-envelope"></i>
               <p>
                 Saran
@@ -35,7 +35,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/admin/rekap" class="nav-link {{Request::is('admin/rekap') ? 'active' : ''}}">
+            <a href="/admin/rekap" class="nav-link {{Request::is('admin/rekap*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Rekap
@@ -44,7 +44,7 @@
           </li>            
 
           <li class="nav-item">
-            <a href="/admin/survey" class="nav-link {{Request::is('admin/survey') ? 'active' : ''}}">
+            <a href="/admin/survey" class="nav-link {{Request::is('admin/survey*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Survey
