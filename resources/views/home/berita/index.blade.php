@@ -15,7 +15,7 @@
           <img src="/{{$item->image}}" width="200px" alt="">
           
           <div class="content-text p-4">
-            <h5><a href="" class="text-decoration-none"><strong>{{$item->title}}</strong></a></h5>
+            <h5><a href="/berita/show/{{$item->id}}" class="text-decoration-none"><strong>{{$item->title}}</strong></a></h5>
             <p>{{$item->excerpt}}</p>
           </div>
         </div>

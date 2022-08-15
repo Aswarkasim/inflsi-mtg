@@ -14,20 +14,20 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-black {{Request::is('komoditi') ? 'active' : ''}}" href="/komoditi"><h6>Komoditi</h6></a>
+            <a class="nav-link text-black {{Request::is('komoditi*') ? 'active' : ''}}" href="/komoditi"><h6>Komoditi</h6></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-black {{Request::is('laporan') ? 'active' : ''}}" href="/laporan"><h6>Laporan</h6></a>
+            <a class="nav-link text-black {{Request::is('laporan*') ? 'active' : ''}}" href="/laporan"><h6>Laporan</h6></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-black {{Request::is('berita') ? 'active' : ''}}" href="/berita"><h6>Berita</h6></a>
+            <a class="nav-link text-black {{Request::is('berita*') ? 'active' : ''}}" href="/berita"><h6>Berita</h6></a>
           </li>
 
 
           <li class="nav-item">
-            <a class="nav-link text-black {{Request::is('contact') ? 'active' : ''}}" href="/contact"><h6>Kontak</h6></a>
+            <a class="nav-link text-black {{Request::is('contact*') ? 'active' : ''}}" href="/contact"><h6>Kontak</h6></a>
           </li>
           
 

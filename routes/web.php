@@ -103,7 +103,12 @@ Route::prefix('/home')->group(function () {
     // Route::resource('/layanan', HomeLayananController::class);;
 });
 Route::get('/komoditi', [HomeKomoditiController::class, 'index']);
+
+
 Route::get('/berita', [HomeBeritaController::class, 'index']);
+Route::get('/berita/show/{id}', [HomeBeritaController::class, 'show']);
+
+
 Route::get('/contact', [HomeContactController::class, 'index']);
 Route::post('/contact/send', [HomeContactController::class, 'sendSaran']);
 
