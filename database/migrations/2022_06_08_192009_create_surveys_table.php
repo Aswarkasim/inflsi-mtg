@@ -17,7 +17,7 @@ class CreateSurveysTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('pasar_id');
-            $table->foreignId('desa_id');
+            $table->foreignId('desa_id')->nullable();
             $table->foreignId('kecamatan_id');
             $table->date('tanggal')->nullable();
             // $table->foreignId('komoditi_id');

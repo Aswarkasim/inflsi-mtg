@@ -37,7 +37,7 @@
              @enderror
           </div>
 
-           <div class="form-group">
+           {{-- <div class="form-group">
             <label for="">Desa</label>
            <select class="form-control" id="desa" name="desa_id" disabled required>
               <option value="">--Pilih Desa--</option>
@@ -47,7 +47,7 @@
                   {{$message}}
                 </div>
              @enderror
-          </div>
+          </div> --}}
 
             <div class="form-group">
             <label for="">Pasar</label>
@@ -89,47 +89,19 @@
 </div>
 
 <script>
-  $(document).ready(function(){
+
+    $(document).ready(function(){
     $('#kecamatan option[value=""]').prop('selected',true);
-    $('#desa option[value!=""]').remove();
+    // $('#pasar option[value!=""]').remove();
 
     kecamatan = $('#kecamatan')
     kecamatan.on('change', function() {
-        $this = $(this)
-        desa = $('#desa')
-
-        if ($this.val() !== '') {
-            $.ajax({
-                url: "{{url('/region/get-desa')}}" +'/' +$this.val() , 
-                type: 'GET',
-                dataType: 'json',
-                success: function(response){
-                    if (response !== 'NOT OK') {
-                        desa.removeAttr('disabled')
-                        desa.html(response)
-                    }
-                }
-            });
-        } else {
-            desa.prop('disabled', true)
-            desa.find('option').val('').text('Pilih Desa')
-        }
-    })  
-  });
-
-
-  $(document).ready(function(){
-    $('#desa option[value=""]').prop('selected',true);
-    $('#pasar option[value!=""]').remove();
-
-    desa = $('#desa')
-    desa.on('change', function() {
         $this = $(this)
         pasar = $('#pasar')
 
         if ($this.val() !== '') {
             $.ajax({
-                url: "{{url('/region/get-pasar')}}" +'/' +$this.val() , 
+                url: "{{url('/region/get-pasar-by-kecamatan')}}" +'/' +$this.val() , 
                 type: 'GET',
                 dataType: 'json',
                 success: function(response){
@@ -143,6 +115,64 @@
             pasar.prop('disabled', true)
             pasar.find('option').val('').text('Pilih Pasar')
         }
-    })
+    })  
   });
+
+  
+  // $(document).ready(function(){
+  //   $('#kecamatan option[value=""]').prop('selected',true);
+  //   $('#desa option[value!=""]').remove();
+
+  //   kecamatan = $('#kecamatan')
+  //   kecamatan.on('change', function() {
+  //       $this = $(this)
+  //       desa = $('#desa')
+
+  //       if ($this.val() !== '') {
+  //           $.ajax({
+  //               url: "{{url('/region/get-desa')}}" +'/' +$this.val() , 
+  //               type: 'GET',
+  //               dataType: 'json',
+  //               success: function(response){
+  //                   if (response !== 'NOT OK') {
+  //                       desa.removeAttr('disabled')
+  //                       desa.html(response)
+  //                   }
+  //               }
+  //           });
+  //       } else {
+  //           desa.prop('disabled', true)
+  //           desa.find('option').val('').text('Pilih Desa')
+  //       }
+  //   })  
+  // });
+
+
+  // $(document).ready(function(){
+  //   $('#desa option[value=""]').prop('selected',true);
+  //   $('#pasar option[value!=""]').remove();
+
+  //   desa = $('#desa')
+  //   desa.on('change', function() {
+  //       $this = $(this)
+  //       pasar = $('#pasar')
+
+  //       if ($this.val() !== '') {
+  //           $.ajax({
+  //               url: "{{url('/region/get-pasar')}}" +'/' +$this.val() , 
+  //               type: 'GET',
+  //               dataType: 'json',
+  //               success: function(response){
+  //                   if (response !== 'NOT OK') {
+  //                       pasar.removeAttr('disabled')
+  //                       pasar.html(response)
+  //                   }
+  //               }
+  //           });
+  //       } else {
+  //           pasar.prop('disabled', true)
+  //           pasar.find('option').val('').text('Pilih Pasar')
+  //       }
+  //   })
+  // });
 </script>
