@@ -11,10 +11,17 @@ class HomeBeritaController extends Controller
     //
     function index()
     {
-        $post = Post::paginate(5);
+
+        $kategori_id = request('kategori_id');
+        if ($kategori_id) {
+            $post = Post::whereKategoriId($kategori_id)->latest()->paginate(5);
+        } else {
+            $post = Post::paginate(5);
+        }
         $data = [
             'post'          => $post,
             'kategori'      => Kategori::all(),
+            'kategori_detail' => Kategori::find($kategori_id),
             'content'       => 'home/berita/index'
         ];
         return view('home/layouts/wrapper', $data);

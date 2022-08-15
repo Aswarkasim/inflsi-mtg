@@ -6,8 +6,14 @@
 
   <div class="row">
     <div class="col-md-8">
-      <div class="text-success py-4"><h4><strong>Berita Terbaru</strong></h4></div>
+      <div class="text-success pt-2"><h4><strong>Berita Terbaru</strong></h4></div>
+      @if (request('kategori_id'))
+      <h5><strong>Menampilkan kategori {{$kategori_detail->name}}</strong></h5>          
+      @endif
+
       
+      @if (count($post) > 0)
+          
       @foreach ($post as $item)
           
       <div class="card mt-2 shadow-sm rounded">
@@ -22,13 +28,17 @@
       </div>
 
       @endforeach
+
+      @else
+      <p class="alert alert-info"><i class="fas fa-info"></i> Belum ada berita</p>
+      @endif
     </div>
 
     <div class="col-md-4">
       <div class="text-success py-4"><h4><strong>Kategori</strong></h4></div>
       <div class="card p-3">
         @foreach ($kategori as $item)
-        <a href="" class="text-decoration-none my-2"><strong>{{$item->name}}</strong></a>
+        <a href="/berita?kategori_id={{$item->id}}" class="text-decoration-none my-2"><strong>{{$item->name}}</strong></a>
         @endforeach
       </div>
 
