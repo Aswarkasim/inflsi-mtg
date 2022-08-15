@@ -23,7 +23,7 @@
               <option>Pilih Pasar</option>
             </select> --}}
 
-            <input type="date" name="tanggal" class="form-control">
+            <input type="date" name="tanggal" required class="form-control">
             {{-- <input type="date" name="date_start" class="form-control"> --}}
             {{-- <input type="date" name="date_end" class="form-control"> --}}
             
