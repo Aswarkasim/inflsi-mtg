@@ -14,17 +14,24 @@ class HomeLaporanController extends Controller
     function index()
     {
         $kecamatan_id = request('kecamatan_id');
-        $pasar_id = request('pasar_id');
+        // $pasar_id = request('pasar_id');
         // $date_start = request('date_start');
         // $date_end = request('date_end');
         $tanggal = request('tanggal');
 
+        $data_kecamatan = [];
+        if ($kecamatan_id) {
+            $data_kecamatan = RekapSurvey::with(['komoditi', 'kecamatan'])->whereKecamatanId($kecamatan_id)->whereTanggal($tanggal)->get();
+            // dd($data_kecamatan);
+        }
         $data_survey = RekapSurvey::with(['komoditi', 'kecamatan'])->groupBy('komoditi_id')->latest('tanggal')->get();
         // dd($data_survey);
 
         $data = [
             'kecamatan'     => Kecamatan::all(),
+            'data_kecamatan' => $data_kecamatan,
             'data_survey' => $data_survey,
+            'kecamatan_detail'     => Kecamatan::find($kecamatan_id),
             'content'       => 'home/laporan/index'
         ];
         return view('home/layouts/wrapper', $data);
