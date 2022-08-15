@@ -21,6 +21,7 @@
     <tr>
       <th>No</th>
       <th>Nama</th>
+      <th>Kecamatan</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -31,6 +32,7 @@
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
       <td><a href="/admin/master/pasar/{{$row->id}}"><b>{{$row->name}}</a></b> </td>
+      <td>{{$row->kecamatan->name}}</td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>

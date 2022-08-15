@@ -10,4 +10,9 @@ class Pasar extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class);
+    }
 }

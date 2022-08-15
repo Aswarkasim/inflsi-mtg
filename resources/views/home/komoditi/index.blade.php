@@ -52,7 +52,7 @@
 
     <div class="d-flex justify-content-center mt-5">
 
-        {{$rekap->links()}}
+        {{$rekap->appends(request()->except('page'))->links()}}
       
     </div>
   </div>

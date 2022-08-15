@@ -115,4 +115,5 @@ Route::post('/contact/send', [HomeContactController::class, 'sendSaran']);
 Route::prefix('/laporan')->group(function () {
     Route::get('/', [HomeLaporanController::class, 'index']);
     Route::get('/show', [HomeLaporanController::class, 'show']);
+    Route::get('/export', [HomeLaporanController::class, 'exportExcel']);
 });

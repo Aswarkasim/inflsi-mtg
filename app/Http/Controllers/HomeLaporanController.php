@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RekapExport;
 use App\Models\Survey;
 use App\Models\Kecamatan;
 use App\Models\RekapSurvey;
 use App\Models\SurveyDetail;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeLaporanController extends Controller
 {
@@ -55,5 +57,32 @@ class HomeLaporanController extends Controller
             'content'       => 'home/laporan/index'
         ];
         return view('home/layouts/wrapper', $data);
+    }
+
+    function exportExcel()
+    {
+
+        $kecamatan_id = request('kecamatan_id');
+        $tanggal = request('tanggal');
+        $this->updateNameById($kecamatan_id, $tanggal);
+        // die($filter);
+        return Excel::download(new RekapExport($kecamatan_id, $tanggal), 'laporan tanggal' . format_indo($tanggal) . '.xlsx');
+    }
+
+    function updateNameById($kecamatan_id, $tanggal)
+    {
+        $rekap = RekapSurvey::with(['komoditi', 'kecamatan'])->whereKecamatanId($kecamatan_id)->whereTanggal($tanggal)->get();
+
+        foreach ($rekap as $row) {
+            if (isset($row->kecamatan_id)) {
+                $row->kecamatan_name = $row->kecamatan->name;
+            }
+
+            if (isset($row->komoditi_id)) {
+                $row->komoditi_name = $row->komoditi->name;
+            }
+
+            $row->save();
+        }
     }
 }

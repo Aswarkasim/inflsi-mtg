@@ -22,9 +22,9 @@ class AdminPasarController extends Controller
         $cari = request('cari');
 
         if ($cari) {
-            $pasar = Pasar::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $pasar = Pasar::with('kecamatan')->where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
         } else {
-            $pasar = Pasar::latest()->paginate(10);
+            $pasar = Pasar::with('kecamatan')->latest()->paginate(10);
         }
         $data = [
             'title'   => 'Manajemen Pasar',

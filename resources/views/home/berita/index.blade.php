@@ -29,9 +29,16 @@
 
       @endforeach
 
+       <div class="float-right">
+            {{$post->appends(request()->except('page'))->links()}}
+          </div>
+
       @else
-      <p class="alert alert-info"><i class="fas fa-info"></i> Belum ada berita</p>
+      <p class="alert alert-info"><i class="fas fa-info"></i> Belum ada berita tentang {{$kategori_detail->name}}</p>
       @endif
+
+       
+
     </div>
 
     <div class="col-md-4">

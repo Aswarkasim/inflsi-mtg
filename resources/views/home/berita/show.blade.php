@@ -18,7 +18,7 @@
       <div class="text-success py-4"><h4><strong>Kategori</strong></h4></div>
       <div class="card p-3">
         @foreach ($kategori as $item)
-        <a href="" class="text-decoration-none my-2"><strong>{{$item->name}}</strong></a>
+        <a href="/berita?kategori_id={{$item->id}}" class="text-decoration-none my-2"><strong>{{$item->name}}</strong></a>
         @endforeach
       </div>
     </div>

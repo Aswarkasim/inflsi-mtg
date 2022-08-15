@@ -21,6 +21,8 @@ class CreateRekapSurveysTable extends Migration
             $table->bigInteger('harga')->default(0);
             $table->bigInteger('selisih')->default(0);
             $table->enum('status', ['KOSONG', 'NAIK', 'TURUN', 'STABIL']);
+            $table->string('komoditi_name')->nullable();
+            $table->string('kecamatan_name')->nullable();
             $table->timestamps();
         });
     }
