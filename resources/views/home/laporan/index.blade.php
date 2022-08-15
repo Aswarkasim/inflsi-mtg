@@ -35,9 +35,12 @@
     {{-- <div class="col-md-4"></div> --}}
   </div>
 
+  @if (request('kecamatan_id') && request('tanggal'))
+      
   <div class="btn-group mt-4">
-    <a href="" class="btn btn-success px-5"><i class="fas fa-download"></i> Export</a>
+    <a href="/laporan/export?kecamatan_id={{request('kecamatan_id')}}&tanggal={{request('tanggal')}}" class="btn btn-success px-5"><i class="fas fa-download"></i> Export</a>
   </div>
+  @endif
 
   @if ($data_kecamatan)
 

@@ -6,6 +6,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>No</th>
         <th>Komoditi</th>
         <th>Harga</th>
         <th>Selisih</th>
@@ -44,6 +45,7 @@
          }
      @endphp
       <tr>
+        <td>{{$loop->iteration}}</td>
         <td>{{$row->komoditi->name}}</td> 
         <td>{{format_rupiah($row->harga)}}</td> 
         <td>{{$row->selisih}}</td>
