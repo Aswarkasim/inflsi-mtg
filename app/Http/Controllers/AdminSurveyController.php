@@ -25,9 +25,9 @@ class AdminSurveyController extends Controller
         $cari = request('cari');
 
         if ($cari) {
-            $survey = Survey::with(['kecamatan', 'desa', 'pasar'])->where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $survey = Survey::with(['kecamatan', 'desa', 'pasar'])->where('name', 'like', '%' . $cari . '%')->orderBy('tanggal', 'DESC')->latest()->paginate(10);
         } else {
-            $survey = Survey::with(['kecamatan', 'desa', 'pasar'])->latest()->paginate(10);
+            $survey = Survey::with(['kecamatan', 'desa', 'pasar'])->orderBy('tanggal', 'DESC')->latest()->paginate(10);
         }
         $data = [
             'title'   => 'Manajemen Survey',

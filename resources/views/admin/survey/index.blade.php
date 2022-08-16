@@ -33,7 +33,7 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/admin/survey/{{$row->id}}"><b> {{$row->tanggal}}</b></a></td>
+      <td><a href="/admin/survey/{{$row->id}}"><b> {{format_indo($row->tanggal)}}</b></a></td>
       <td>{{$row->pasar->name}}</td>
       {{-- <td>{{$row->desa->name}}</td> --}}
       <td>{{$row->kecamatan->name}}</td>
