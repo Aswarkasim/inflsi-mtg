@@ -19,11 +19,12 @@ class AdminUserController extends Controller
     {
         //
         $cari = request('cari');
+        $role = request('role');
 
         if ($cari) {
-            $user = User::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $user = User::where('name', 'like', '%' . $cari . '%')->whereRole($role)->latest()->paginate(10);
         } else {
-            $user = User::latest()->paginate(10);
+            $user = User::whereRole($role)->latest()->paginate(10);
         }
         $data = [
             'title'   => 'Manajemen User',

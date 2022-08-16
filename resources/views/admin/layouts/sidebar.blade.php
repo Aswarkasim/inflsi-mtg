@@ -145,13 +145,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/user" class="nav-link {{Request::is('admin/user*') ? 'child-active' : ''}}">
+                <a href="/admin/user?role=surveyor" class="nav-link {{request('role')=='surveyor' ? 'child-active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>User</p>
+                  <p>Surveyor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/user?role=admin" class="nav-link {{request('role')=='admin' ? 'child-active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Admin</p>
                 </a>

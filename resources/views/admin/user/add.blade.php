@@ -45,18 +45,18 @@
                   echo 'selected';
                 }
               } ?> >Admin</option>
-              <option value="user"
+              <option value="surveyor"
               <?php 
               if(isset($user)) {
-                if($user->role == 'user') {
+                if($user->role == 'surveyor') {
                   echo 'selected';
                   }
               }else{
-                if(old('role') == 'user') {
+                if(old('role') == 'surveyor') {
                   echo 'selected';
                 }
               } ?>
-              >User</option>
+              >Surveyor</option>
             </select>
              @error('role')
                 <div class="invalid-feedback">

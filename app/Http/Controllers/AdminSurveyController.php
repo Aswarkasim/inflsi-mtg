@@ -66,7 +66,7 @@ class AdminSurveyController extends Controller
         $data = $request->validate([
             'tanggal'              => 'required',
             'kecamatan_id'              => 'required',
-            'desa_id'              => 'required',
+            // 'desa_id'              => 'required',
             'pasar_id'              => 'required',
         ]);
 
