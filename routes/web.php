@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminRegionController;
 use App\Http\Controllers\AdminSatuanController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\HomeLaporanController;
 
 /*
@@ -117,3 +118,6 @@ Route::prefix('/laporan')->group(function () {
     Route::get('/show', [HomeLaporanController::class, 'show']);
     Route::get('/export', [HomeLaporanController::class, 'exportExcel']);
 });
+
+
+Route::get('/test-currency', [GeneralController::class, 'testCurrency']);

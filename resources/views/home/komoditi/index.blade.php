@@ -150,7 +150,7 @@
     var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
 
     var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : [<?php foreach($fluktuasi as $row){echo $row->tanggal;} ?>],
       datasets: [
         {
           label               : 'Digital Goods',

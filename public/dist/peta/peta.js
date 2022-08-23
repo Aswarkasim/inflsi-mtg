@@ -28,7 +28,7 @@ matengmap.addEventListener("click", function (e) {
                 iconStatus = "fa-arrow-down";
                 break;
             case "STABIL":
-                statusAlert = "alert-primary";
+                statusAlert = "alert-warning";
                 iconStatus = "fa-circle";
                 break;
         }

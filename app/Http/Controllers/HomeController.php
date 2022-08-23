@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Banner;
+use App\Models\HistoryRekap;
 use App\Models\Komoditi;
 use App\Models\Kecamatan;
 use App\Models\RekapSurvey;
@@ -28,8 +29,9 @@ class HomeController extends Controller
             $kecamatan_id = 1;
         }
 
+        $historyRekap = HistoryRekap::latest()->first();
 
-        $rekap = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKomoditiId($komoditi_id)->latest('tanggal')->get();
+        $rekap = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKomoditiId($komoditi_id)->whereTanggal($historyRekap->tanggal)->get();
         $rekapByKecamatan  = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->latest('tanggal')->limit(6)->get();
         // dd($rekap);
         $data = [
@@ -37,6 +39,7 @@ class HomeController extends Controller
             'post'     => Post::with('category')->paginate(8),
             'kecamatan' => Kecamatan::all(),
             'komoditi'  => Komoditi::all(),
+            'historyRekap' => $historyRekap,
             'rekap'     => $rekap,
             'rekapByKecamatan'     => $rekapByKecamatan,
             'content'  => 'home/home/index'

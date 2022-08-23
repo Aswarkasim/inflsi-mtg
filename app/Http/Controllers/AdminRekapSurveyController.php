@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistoryRekap;
 use App\Models\Kecamatan;
 use App\Models\Komoditi;
 use App\Models\RekapSurvey;
@@ -36,20 +37,31 @@ class AdminRekapSurveyController extends Controller
                 $survey_detail = SurveyDetail::whereKomoditiId($km->id)->get();
                 $harga = $this->rerata($survey_detail);
 
-                $rekap = RekapSurvey::latest()->first();
+                $rekap = RekapSurvey::whereKecamatanId($kc->id)->whereKomoditiId($km->id)->latest()->first();
+                // dd($rekap);
 
-                $rekap == null ? $selisih = 0 : $selisih = $rekap->selisih;
-                $selisih = abs($selisih - $harga);
+                $rekap == null ? $harga_lama = 0 : $harga_lama = $rekap->harga;
+                $selisih = $harga - $harga_lama;
+                // dd($selisih);
 
-                if ($rekap) {
-                    if ($harga < $rekap->harga) {
-                        $status = 'TURUN';
-                    } else if ($harga > $rekap->harga) {
-                        $status = 'NAIK';
-                    } else {
-                        $status = 'STABIL';
-                    }
+                // if ($rekap) {
+                //     if ($harga < $rekap->harga) {
+                //         $status = 'TURUN';
+                //     } else if ($harga > $rekap->harga) {
+                //         $status = 'NAIK';
+                //     } else {
+                //         $status = 'STABIL';
+                //     }
+                // }
+                if ($selisih < 100 && $selisih > -100) {
+                    $status = 'STABIL';
+                } else if ($selisih > 100) {
+                    $status = 'NAIK';
+                } else if ($selisih < -100) {
+                    $status = 'TURUN';
                 }
+
+
                 $data = [
                     'kecamatan_id'      => $kc->id,
                     'komoditi_id'       => $km->id,
@@ -61,6 +73,11 @@ class AdminRekapSurveyController extends Controller
                 RekapSurvey::create($data);
             }
         }
+
+        HistoryRekap::create([
+            'user_id'   => auth()->user()->id,
+            'tanggal'   => $current_date
+        ]);
         return redirect('/admin/rekap');
     }
 
@@ -76,7 +93,7 @@ class AdminRekapSurveyController extends Controller
             $n = 0;
         }
         $rerata = $sum / $n;
-        return $rerata;
+        return currency_multiple_5($rerata);
     }
 
     function delete($rekap_id)

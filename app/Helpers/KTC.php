@@ -24,3 +24,10 @@ function format_indo($date)
 
   return $result;
 }
+
+function currency_multiple_5($in)
+{
+  // $number = number_format(round(12345.6789), 2);
+  $number = round(($in * 2) / 1000) * 500;
+  return $number;
+}
