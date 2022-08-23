@@ -1,6 +1,6 @@
 
   <div class="my-3">
-    <h4><b>Rata-rata harga komditi kecamatan {{$kecamatan_detail->name}} pada {{format_indo(request('tanggal'))}}</b></h4>
+    <h4><b>Rata-rata Harga Komoditi kecamatan {{$kecamatan_detail->name}} pada {{format_indo(request('tanggal'))}}</b></h4>
   </div>
 <div class="table-responsive mt-2">
   <table class="table">
