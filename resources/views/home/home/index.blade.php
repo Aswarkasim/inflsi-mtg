@@ -140,18 +140,22 @@
 
         <div class="col-md-4">
           <span class="">
+
+            <form action="/komoditi"></form>
             <div class="input-group">
-                <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <select class="form-select" id="inputGroupSelect04" name="kecamatan_id" aria-label="Example select with button addon">
                   <option selected>Pilih Kecamatan</option>
-                  <option value="1">One</option>
+                  @foreach ($kecamatan as $item)
+                  <option value="{{$item->id}}"></option>
+                  @endforeach
                 </select>
 
-                <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                {{-- <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                   <option selected>Pilih Pasar</option>
                   <option value="1">One</option>
-                </select>
+                </select> --}}
                 
-                <button class="btn btn-success" type="button">Button</button>
+                <button type="submit" class="btn btn-success" type="button">Button</button>
               </div>
 
               </span>
@@ -179,7 +183,7 @@
       </div>
 
       <div class="text-center mt-3">
-        <a href="" class="btn btn-success">Lihat Selengkapnya &RightArrow;</a>
+        <a href="/komoditi" class="btn btn-success">Lihat Selengkapnya &RightArrow;</a>
       </div>
     </div>
   </div>

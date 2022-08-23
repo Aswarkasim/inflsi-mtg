@@ -30,7 +30,7 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/admin/rekap/detail/{{$row->id}}"><b> {{$row->tanggal}}</b></a></td>
+      <td><a href="/admin/rekap/detail/{{$row->id}}"><b> {{format_indo($row->tanggal)}}</b></a></td>
       <td>
          <form action="/admin/rekap/delete/{{$row->id}}" method="post">
             @method('delete')

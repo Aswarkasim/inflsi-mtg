@@ -25,6 +25,7 @@ class HomeKomoditiController extends Controller
         }
 
         $rekap  = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->latest('tanggal')->paginate(12);
+
         $data = [
             'rekap' => $rekap,
             'komoditi'  => Komoditi::all(),

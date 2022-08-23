@@ -42,7 +42,39 @@
           <div class="card-body">
             <p class="card-title">{{$item->komoditi->name}} </p>
             <h6><strong>{{format_rupiah($item->harga)}}/{{$item->komoditi->satuan->name}}</strong></h6><br>
-            <div class="alert alert-success"><i class="fas fa-arrow-down"></i> Turun Rp. 2.000</div>
+            
+            @php
+            $alert = '';
+            $icon = '';
+                switch ($item->status) {
+                  case 'NAIK':
+                    $alert = 'danger';
+                    $icon = 'fa-arrow-up';
+                    break;
+
+                  case 'TURUN':
+                    $alert = 'success';
+                    $icon = 'fa-arrow-down';
+                    break;
+                  
+                  case 'STABIL':
+                    $alert = 'warning';
+                     $icon = 'fa-circle';
+                    break;
+
+                  case 'KOSONG':
+                    $alert = 'secondary';
+                     $icon = 'fa-file';
+                    break;
+
+                    
+                  
+                  default:
+                    # code...
+                    break;
+                }
+            @endphp
+            <div class="alert alert-{{$alert}}"><i class="fas {{$icon}}"></i> {{$item->status . ' '. format_rupiah($item->selisih)}}</div>
           </div>
         </div>
       </div>

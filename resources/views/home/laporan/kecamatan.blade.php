@@ -48,7 +48,7 @@
         <td>{{$loop->iteration}}</td>
         <td>{{$row->komoditi->name}}</td> 
         <td>{{format_rupiah($row->harga)}}</td> 
-        <td>{{$row->selisih}}</td>
+        <td>{{format_rupiah($row->selisih)}}</td>
         <td>
           <div class="alert {{$status}}"><i class="fas {{$icon}}"></i> {{$row->status}}</div>
         </td>
