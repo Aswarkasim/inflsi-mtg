@@ -150,7 +150,13 @@
     var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
 
     var areaChartData = {
-      labels  : [<?php foreach($fluktuasi as $row){echo $row->tanggal;} ?>],
+      labels  : [
+        <?php 
+          foreach($fluktuasi as $item){
+            echo "'".format_indo($item->tanggal)."',";
+          }
+        ?>
+      ],
       datasets: [
         {
           label               : 'Digital Goods',
@@ -161,7 +167,13 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
+          data                : [
+            <?php 
+              foreach($fluktuasi as $item){
+                  echo "'".$item->harga."',";
+                }
+            ?>
+          ]
         },
       ]
     }

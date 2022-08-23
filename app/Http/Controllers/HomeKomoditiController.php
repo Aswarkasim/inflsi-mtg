@@ -26,7 +26,7 @@ class HomeKomoditiController extends Controller
 
         $rekap  = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->latest('tanggal')->paginate(12);
 
-        $fluktuasi = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->whereKomoditiId($komoditi_id)->latest('tanggal')->paginate(12);
+        $fluktuasi = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->whereKomoditiId($komoditi_id)->orderBy('tanggal', 'asc')->get();
         // dd($fluktuasi);
         $data = [
             'rekap' => $rekap,
