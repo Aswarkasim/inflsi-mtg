@@ -1,7 +1,7 @@
   @if (isset($data_survey))
 
   <div class="my-3">
-    <h4><b>Rata-rata harga komditi kecamatan se-Mamuju Tengah</b></h4>
+    <h4><b>Rata-rata harga komoditi kecamatan se-Mamuju Tengah</b></h4>
   </div>
     <div class="table-responsive mt-2">
         <table class="table">
