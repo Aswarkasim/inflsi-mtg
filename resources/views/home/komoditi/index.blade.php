@@ -33,6 +33,9 @@
   <div class="row mt-3">
     
     @foreach ($rekap as $item)
+
+    @isset($item->komoditi)
+        
         
       <div class="col-md-2 mt-3">
         <div class="card card-komoditi shadow">
@@ -78,6 +81,9 @@
           </div>
         </div>
       </div>
+
+    @endisset
+
       
       @endforeach        
     </div>
