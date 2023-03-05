@@ -101,6 +101,7 @@ class AdminRekapSurveyController extends Controller
             return currency_multiple_5($rerata);
         } catch (\Throwable $th) {
             Alert::error('Error', 'Data belum lengkap');
+            return redirect()->back();
         }
     }
 
