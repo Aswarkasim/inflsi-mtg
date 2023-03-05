@@ -162,6 +162,8 @@
 
         @foreach ($rekapByKecamatan as $item)
             
+        @isset($item->komodit)
+            
         <div class="col-md-2 mt-2">
           <div class="card card-komoditi">
             <div class="img-wrapper-komoditi">
@@ -205,6 +207,9 @@
             </div>
           </div>
         </div>
+
+        @endisset
+
 
         @endforeach        
       </div>

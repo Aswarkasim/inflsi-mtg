@@ -66,19 +66,19 @@
               </div>
 
             </div>
-            <div class="col-md-6">
-               <div class="form-group">
-                <label for="">Isi Berita</label>
-                <textarea class="form-control  @error('title') is-invalid @enderror" id="summernote"  name="body" placeholder="Isi Artikel">{{isset($post) ? $post->title : old('title')}}</textarea>
-                @error('title')
-                    <div class="invalid-feedback">
-                      {{$message}}
-                    </div>
-                @enderror
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">Isi Berita</label>
+                  <textarea class="form-control  @error('title') is-invalid @enderror" id="summernote"  name="body" placeholder="Isi Artikel">{{isset($post) ? $post->title : old('title')}}</textarea>
+                  @error('title')
+                      <div class="invalid-feedback">
+                        {{$message}}
+                      </div>
+                  @enderror
+                </div>
               </div>
             </div>
-          </div>
-          
+            
 
      
          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
