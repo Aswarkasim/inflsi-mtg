@@ -25,62 +25,70 @@ class AdminRekapSurveyController extends Controller
     }
     function create()
     {
-        $current_date = date('Y-m-d');
-        // echo $current_date;
-        $komoditi = Komoditi::all();
-        $kecamatan = Kecamatan::all();
 
-        $harga = 0;
-        $selisih = 0;
-        $status = 'KOSONG';
-        foreach ($kecamatan as $kc) {
-            foreach ($komoditi as $km) {
-                $survey_detail = SurveyDetail::whereKomoditiId($km->id)->get();
+        try {
+            //code...
 
-                $harga = $this->rerata($survey_detail);
+            $current_date = date('Y-m-d');
+            // echo $current_date;
+            $komoditi = Komoditi::all();
+            $kecamatan = Kecamatan::all();
 
-                $rekap = RekapSurvey::whereKecamatanId($kc->id)->whereKomoditiId($km->id)->latest()->first();
-                // dd($rekap);
+            $harga = 0;
+            $selisih = 0;
+            $status = 'KOSONG';
+            foreach ($kecamatan as $kc) {
+                foreach ($komoditi as $km) {
+                    $survey_detail = SurveyDetail::whereKomoditiId($km->id)->get();
 
-                $rekap == null ? $harga_lama = 0 : $harga_lama = $rekap->harga;
-                $selisih = $harga - $harga_lama;
-                // dd($selisih);
+                    $harga = $this->rerata($survey_detail);
 
-                // if ($rekap) {
-                //     if ($harga < $rekap->harga) {
-                //         $status = 'TURUN';
-                //     } else if ($harga > $rekap->harga) {
-                //         $status = 'NAIK';
-                //     } else {
-                //         $status = 'STABIL';
-                //     }
-                // }
-                if ($selisih < 100 && $selisih > -100) {
-                    $status = 'STABIL';
-                } else if ($selisih > 100) {
-                    $status = 'NAIK';
-                } else if ($selisih < -100) {
-                    $status = 'TURUN';
+                    $rekap = RekapSurvey::whereKecamatanId($kc->id)->whereKomoditiId($km->id)->latest()->first();
+                    // dd($rekap);
+
+                    $rekap == null ? $harga_lama = 0 : $harga_lama = $rekap->harga;
+                    $selisih = $harga - $harga_lama;
+                    // dd($selisih);
+
+                    // if ($rekap) {
+                    //     if ($harga < $rekap->harga) {
+                    //         $status = 'TURUN';
+                    //     } else if ($harga > $rekap->harga) {
+                    //         $status = 'NAIK';
+                    //     } else {
+                    //         $status = 'STABIL';
+                    //     }
+                    // }
+                    if ($selisih < 100 && $selisih > -100) {
+                        $status = 'STABIL';
+                    } else if ($selisih > 100) {
+                        $status = 'NAIK';
+                    } else if ($selisih < -100) {
+                        $status = 'TURUN';
+                    }
+
+
+                    $data = [
+                        'kecamatan_id'      => $kc->id,
+                        'komoditi_id'       => $km->id,
+                        'tanggal'           => $current_date,
+                        'harga'             => $harga,
+                        'selisih'           => $selisih,
+                        'status'            => $status
+                    ];
+                    RekapSurvey::create($data);
                 }
-
-
-                $data = [
-                    'kecamatan_id'      => $kc->id,
-                    'komoditi_id'       => $km->id,
-                    'tanggal'           => $current_date,
-                    'harga'             => $harga,
-                    'selisih'           => $selisih,
-                    'status'            => $status
-                ];
-                RekapSurvey::create($data);
             }
-        }
 
-        HistoryRekap::create([
-            'user_id'   => auth()->user()->id,
-            'tanggal'   => $current_date
-        ]);
-        return redirect('/admin/rekap');
+            HistoryRekap::create([
+                'user_id'   => auth()->user()->id,
+                'tanggal'   => $current_date
+            ]);
+            return redirect('/admin/rekap');
+        } catch (\Throwable $th) {
+            Alert::error('Error', 'Data belum lengkap');
+            return redirect()->back();
+        }
     }
 
     private function rerata($rekap)
@@ -88,21 +96,16 @@ class AdminRekapSurveyController extends Controller
         // dd($rekap);
 
 
-        try {
-            $sum = 0;
-            foreach ($rekap as $r) {
-                $sum = $sum + $r->harga;
-            }
-            $n = count($rekap);
-            if ($n == null) {
-                $n = 0;
-            }
-            $rerata = $sum / $n;
-            return currency_multiple_5($rerata);
-        } catch (\Throwable $th) {
-            Alert::error('Error', 'Data belum lengkap');
-            return redirect()->back();
+        $sum = 0;
+        foreach ($rekap as $r) {
+            $sum = $sum + $r->harga;
         }
+        $n = count($rekap);
+        if ($n == null) {
+            $n = 0;
+        }
+        $rerata = $sum / $n;
+        return currency_multiple_5($rerata);
     }
 
     function delete($rekap_id)
