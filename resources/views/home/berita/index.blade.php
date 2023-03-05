@@ -49,7 +49,7 @@
         @endforeach
       </div>
 
-      <div class="text-success pt-4"><h4><strong>Berita Tentang Pasar</strong></h4></div>
+      {{-- <div class="text-success pt-4"><h4><strong>Berita Tentang Pasar</strong></h4></div>
       <div class="card p-3">
         @foreach ($kategori as $item)
           <div class="card mt-2 shadow-sm rounded">
@@ -58,12 +58,12 @@
                 <img src="/img/pad.jpg" width="100%" alt="">
               </div>
               <div class="p-3">
-                <a href = "" class="text-decoration-none">Judul berita Terkait</a>
+                <a href = "" class="text-decoration-none">{{ $item->name }}</a>
               </div>
             </div>
           </div>
         @endforeach
-      </div>
+      </div> --}}
     </div>
 
 
