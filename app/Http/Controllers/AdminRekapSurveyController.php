@@ -9,6 +9,7 @@ use App\Models\RekapSurvey;
 use App\Models\SurveyDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminRekapSurveyController extends Controller
 {
@@ -35,6 +36,7 @@ class AdminRekapSurveyController extends Controller
         foreach ($kecamatan as $kc) {
             foreach ($komoditi as $km) {
                 $survey_detail = SurveyDetail::whereKomoditiId($km->id)->get();
+
                 $harga = $this->rerata($survey_detail);
 
                 $rekap = RekapSurvey::whereKecamatanId($kc->id)->whereKomoditiId($km->id)->latest()->first();
@@ -84,16 +86,22 @@ class AdminRekapSurveyController extends Controller
     private function rerata($rekap)
     {
         // dd($rekap);
-        $sum = 0;
-        foreach ($rekap as $r) {
-            $sum = $sum + $r->harga;
+
+
+        try {
+            $sum = 0;
+            foreach ($rekap as $r) {
+                $sum = $sum + $r->harga;
+            }
+            $n = count($rekap);
+            if ($n == null) {
+                $n = 0;
+            }
+            $rerata = $sum / $n;
+            return currency_multiple_5($rerata);
+        } catch (\Throwable $th) {
+            Alert::error('Error', 'Data belum lengkap');
         }
-        $n = count($rekap);
-        if ($n == null) {
-            $n = 0;
-        }
-        $rerata = $sum / $n;
-        return currency_multiple_5($rerata);
     }
 
     function delete($rekap_id)
