@@ -50,6 +50,9 @@
           </thead>
           <tbody>
             @foreach ($rekap_detail as $row)
+
+            @isset($row->komoditi)
+                
             <tr>
               <td>{{$row->komoditi->name}}</td>
                @foreach ($kecamatan as $k)
@@ -62,6 +65,9 @@
               
               @endforeach
             </tr>
+
+            @endisset
+
             @endforeach
           </tbody>
         </table>

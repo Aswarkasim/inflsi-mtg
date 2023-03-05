@@ -71,6 +71,9 @@
           </thead>
           <tbody>
             @foreach ($survey_detail as $row)
+
+            @isset($row->komoditi)
+                
             <tr>
               <td>{{$row->komoditi->name}}</td>
               <td>{{$row->komoditi->satuan->name}}</td>
@@ -78,6 +81,9 @@
               <td>{{format_rupiah($row->range)}}</td>
               <td>{{$row->status}}</td>
             </tr>
+
+            @endisset
+
             @endforeach
           </tbody>
         </table>
