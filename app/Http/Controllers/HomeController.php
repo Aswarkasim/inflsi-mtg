@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         $historyRekap = HistoryRekap::latest()->first();
 
-        $rekap = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKomoditiId($komoditi_id)->whereTanggal($historyRekap->tanggal)->latest('tanggal')->get();
+        $rekap = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKomoditiId($komoditi_id)->whereTanggal($historyRekap->tanggal)->groupBy('kecamatan_id')->get();
         $rekapByKecamatan  = RekapSurvey::with(['kecamatan', 'komoditi'])->whereKecamatanId($kecamatan_id)->latest('tanggal')->limit(6)->get();
         // dd($rekap);
         $data = [
